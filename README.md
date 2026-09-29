@@ -13,10 +13,10 @@ Two installation routes are available. Only one should be used per environment; 
 
 ```
 /plugin marketplace add bxacosta/skills
-/plugin install skills@bxacosta
+/plugin install bxacosta-skills@bxacosta
 ```
 
-The plugin is installed as a read-only bundle and is updated when a new version is released. Skills are available under the `skills:` namespace, for example `/skills:<name>`.
+The plugin is installed as a read-only bundle and is updated when a new version is released. Skills are available under the `bxacosta-skills:` namespace, for example `/bxacosta-skills:<name>`.
 
 ### skills.sh
 

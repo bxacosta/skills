@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "name": "skills",
+      "name": "bxacosta-skills",
       "source": "./",
       "description": "Agent Skills by Bryan Acosta."
     }
