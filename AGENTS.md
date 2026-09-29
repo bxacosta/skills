@@ -8,6 +8,6 @@ This repository publishes Agent Skills (`skills/<name>/SKILL.md`) as a Claude Co
 - Adding, renaming, or removing a skill requires updating the **Available skills** section of `README.md` and `CHANGELOG.md` in the same change.
 - The version is defined only in `.claude-plugin/plugin.json`. It is not added to `marketplace.json` or as a top-level key in `SKILL.md`.
 - Symbolic links are not allowed. Files use LF line endings. Scripts are written in Node.js or Python.
-- `node scripts/validate.mjs` is run after any change to `skills/` or `.claude-plugin/`.
+- `bun scripts/validate.mjs` is run after any change to `skills/` or `.claude-plugin/`.
 - Documentation is written in English, in a neutral and impersonal tone.
 - Commit messages follow Conventional Commits and are short.

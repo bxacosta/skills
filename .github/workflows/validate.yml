@@ -12,19 +12,19 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 22
+          bun-version: latest
 
       - name: Lint skills and manifests
-        run: node scripts/validate.mjs
+        run: bun scripts/validate.mjs
 
       - name: Installer smoke test (skills.sh finds every skill)
         run: |
           count=$(find skills -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)
           if [ "$count" -eq 0 ]; then echo "No skills yet, skipping."; exit 0; fi
-          out=$(npx -y skills@latest add . --list 2>&1 | sed 's/\x1b\[[0-9;?]*[A-Za-z]//g')
+          out=$(bunx skills@latest add . --list 2>&1 | sed 's/\x1b\[[0-9;?]*[A-Za-z]//g')
           echo "$out"
           echo "$out" | grep -q "Found $count skill" || { echo "::error::skills CLI did not find all $count skills"; exit 1; }

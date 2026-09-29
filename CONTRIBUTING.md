@@ -9,7 +9,7 @@ The `skills/` directory is the single source of content. It is distributed throu
 | Channel | Audience | Files read |
 |---|---|---|
 | Claude Code plugin | Claude Code users who prefer managed updates | `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` |
-| skills.sh (`npx skills add`) | Users of any supported agent, including Claude Code users who prefer editable copies | `skills/<name>/SKILL.md` |
+| skills.sh (`bunx skills add`) | Users of any supported agent, including Claude Code users who prefer editable copies | `skills/<name>/SKILL.md` |
 
 Other clients reuse the same files: Codex, GitHub Copilot CLI, VS Code, Grok Build, and Factory read `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`. Codex treats them as a compatibility format and can install the repository as a plugin without additional manifests.
 
@@ -118,14 +118,14 @@ The version is defined only in `.claude-plugin/plugin.json`. Claude Code deliver
 ## Local testing
 
 ```bash
-node scripts/validate.mjs                                    # layout, frontmatter, and manifests (same check as CI)
+bun scripts/validate.mjs                                     # layout, frontmatter, and manifests (same check as CI)
 claude plugin validate .claude-plugin/plugin.json --strict   # plugin manifest
 claude plugin validate . --strict                            # marketplace manifest
-npx skills@latest add . --list                               # skills detected by skills.sh
+bunx skills@latest add . --list                              # skills detected by skills.sh
 claude --plugin-dir .                                        # Claude Code session with the plugin loaded
 ```
 
-A skill can be tested in another agent by installing it into a separate project: `npx skills@latest add <path-to-repository> --skill <name> -a codex` (or `-a cursor`, `-a '*'`).
+A skill can be tested in another agent by installing it into a separate project: `bunx skills@latest add <path-to-repository> --skill <name> -a codex` (or `-a cursor`, `-a '*'`).
 
 Triggering is verified by opening a session in the target agent and writing a prompt that should use the skill without naming it, then confirming that the skill loads. A prompt that should not use the skill is tested as well.
 

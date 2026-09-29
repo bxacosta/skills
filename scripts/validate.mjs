@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Validates the repo layout, every skill's SKILL.md frontmatter, and the
-// Claude plugin manifests. Zero dependencies: run with `node scripts/validate.mjs`.
+// Claude plugin manifests. Zero dependencies: run with `bun scripts/validate.mjs` (Node.js also works).
 // Exits 1 on any error. Warnings are printed but do not fail the run.
 
 import { existsSync, lstatSync, readdirSync, readFileSync } from "node:fs";
