@@ -4,6 +4,8 @@ Notable changes to this repository are documented in this file. The format follo
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-29
+
 ### Added
 
 - `attach-browser` skill.
