@@ -162,6 +162,7 @@ if (existsSync(skillsDir)) {
     if (typeof description !== "string" || !description.trim()) error(skillMd, "`description` is required");
     else {
       if (description.length > 1024) error(skillMd, `\`description\` is ${description.length} characters (max 1024)`);
+      else if (description.length > 200) warn(skillMd, `\`description\` is ${description.length} characters (claude.ai uploads accept 200)`);
       if (/[<>]/.test(description)) error(skillMd, "`description` must not contain XML tags or angle brackets");
     }
 

@@ -11,9 +11,11 @@ The `skills/` directory is the single source of content. It is distributed throu
 | Claude Code plugin | Claude Code users who prefer managed updates | `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` |
 | skills.sh (`npx skills add`) | Users of any supported agent, including Claude Code users who prefer editable copies | `skills/<name>/SKILL.md` |
 
-Other clients reuse the same files: GitHub Copilot CLI, VS Code, Grok Build, and Factory read `.claude-plugin/`, and Codex reads `.claude-plugin/marketplace.json` as a legacy marketplace format.
+Other clients reuse the same files: Codex, GitHub Copilot CLI, VS Code, Grok Build, and Factory read `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`. Codex treats them as a compatibility format and can install the repository as a plugin without additional manifests.
 
 Every skill inside `skills/` is published. The plugin manifest cannot exclude a skill, because its `skills` field only adds paths to the default `skills/` scan. Unfinished skills are kept in a separate branch until they are ready.
+
+The plugin source is the repository root (`"source": "./"`), so Claude Code copies the entire repository into its plugin cache on installation, and no exclusion mechanism exists. The repository therefore contains no private material, research, or evaluation workspaces. A `package.json` with a lockfile at the repository root would also make Claude Code run `npm ci` in the cache, so none is kept there.
 
 ## Layout
 
@@ -42,7 +44,7 @@ Only the following keys are accepted:
 | Key | Required | Rule |
 |---|---|---|
 | `name` | Yes | Identical to the folder name. Lowercase `a-z`, `0-9`, and single hyphens, up to 64 characters. It cannot contain `claude` or `anthropic`. |
-| `description` | Yes | 1 to 1024 characters, without `<` or `>`. It states what the skill does and when it applies, using the terms a user is likely to write. Agents use this text to decide when to load the skill. |
+| `description` | Yes | 1 to 1024 characters, without `<` or `>`; 200 characters or fewer is the target, since the claude.ai upload documentation sets that limit. It states what the skill does and when it applies, using the terms a user is likely to write. Agents use this text to decide when to load the skill. |
 | `license` | No | `MIT`, unless the skill includes third-party material under another license. |
 | `compatibility` | No | Environment requirements, up to 500 characters, for example "Requires Python 3.10+ and network access". |
 | `metadata` | No | Map of string keys to string values, for example `author` or `version`. |
@@ -133,7 +135,8 @@ The following items are intentionally not part of the current setup. Each one is
 
 | Item | Condition |
 |---|---|
-| Native Codex plugin: `.codex-plugin/plugin.json` with `"skills": "./skills/"` and `.agents/plugins/marketplace.json` | Codex users request managed updates instead of skills.sh copies. |
+| Codex plugin installation in `README.md` (`codex plugin marketplace add bxacosta/skills`, then `codex plugin add bxacosta-skills@bxacosta`) | The installation is tested end to end in Codex. Codex already reads `.claude-plugin/`, so no additional manifest is required. |
+| `.agents/plugins/marketplace.json` | Codex-specific marketplace metadata (`policy`, `interface`) is required. |
 | `.cursor-plugin/plugin.json`, a root `plugin.json` ([Agent Plugins](https://agent-plugins.org)), `gemini-extension.json` | A native plugin or marketplace listing is required for that client. Each manifest adds a version field, so a script that checks version consistency is added at the same time. |
 | Changesets (`package.json`, `.changeset/`, release workflow) | Releases become frequent or several contributors edit the changelog. |
 | `claude plugin validate` and `skills-ref validate` in CI | Local validation proves insufficient. Both require additional tooling in CI. |
