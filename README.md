@@ -21,16 +21,16 @@ The plugin is installed as a read-only bundle and is updated when a new version 
 ### skills.sh
 
 ```bash
-npx skills@latest add bxacosta/skills
+bunx skills@latest add bxacosta/skills
 ```
 
-The installer prompts for the skills and target agents, then copies the skill files into the project. Installed copies can be edited locally and are updated with `npx skills update`.
+The installer prompts for the skills and target agents, then copies the skill files into the project. Installed copies can be edited locally and are updated with `bunx skills update`.
 
 A single skill or a specific release can be installed with:
 
 ```bash
-npx skills@latest add bxacosta/skills --skill <name>
-npx skills@latest add bxacosta/skills#v0.1.0
+bunx skills@latest add bxacosta/skills --skill <name>
+bunx skills@latest add bxacosta/skills#v0.1.0
 ```
 
 ### Manual installation
