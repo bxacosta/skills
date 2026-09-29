@@ -39,11 +39,7 @@ A skill folder from [`skills/`](./skills) can be copied into the skills director
 
 ## Available skills
 
-No skills have been published yet.
-
-<!-- One entry per skill, linking its SKILL.md:
-- [name](./skills/name/SKILL.md): short description.
--->
+- [attach-browser](./skills/attach-browser/SKILL.md): connects to a running Chromium browser over CDP to reuse its logged-in sessions, or launches a dedicated debugging profile.
 
 ## Contributing
 

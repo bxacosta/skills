@@ -6,6 +6,7 @@ Notable changes to this repository are documented in this file. The format follo
 
 ### Added
 
+- `attach-browser` skill.
 - Claude Code plugin and marketplace manifests.
 - Validation script and CI workflow.
 - Contribution guidelines.
