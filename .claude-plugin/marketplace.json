@@ -1,0 +1,15 @@
+{
+  "name": "bxacosta",
+  "description": "Agent Skills by Bryan Acosta, distributed as a Claude Code plugin.",
+  "owner": {
+    "name": "Bryan Acosta",
+    "url": "https://github.com/bxacosta"
+  },
+  "plugins": [
+    {
+      "name": "skills",
+      "source": "./",
+      "description": "Agent Skills by Bryan Acosta."
+    }
+  ]
+}

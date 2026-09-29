@@ -1,0 +1,9 @@
+# Force LF everywhere so skills and scripts behave the same on every OS.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.zip binary

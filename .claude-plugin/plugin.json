@@ -1,0 +1,13 @@
+{
+  "name": "skills",
+  "version": "0.1.0",
+  "description": "Agent Skills by Bryan Acosta.",
+  "author": {
+    "name": "Bryan Acosta",
+    "url": "https://github.com/bxacosta"
+  },
+  "homepage": "https://github.com/bxacosta/skills",
+  "repository": "https://github.com/bxacosta/skills",
+  "license": "MIT",
+  "keywords": ["skills", "agent-skills"]
+}
